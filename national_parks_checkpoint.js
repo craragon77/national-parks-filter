@@ -57,7 +57,7 @@ function renderTheParks(responseJson){
                 <div>
                     <h4>${responseJson.data[i].fullName}</h4><br
                     <p>${responseJson.data[i].description}</p><br>
-                    <p><span><a href="${response.data[i].url}">Learn More at the website!</a></span></p>
+                    <p><span><a href="${responseJson.data[i].url}">Learn More at the website!</a></span></p>
                 </div>
             </li>`
         )

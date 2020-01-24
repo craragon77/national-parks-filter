@@ -43,7 +43,7 @@ function formatQuery(params){
 function submitButton(){
     $(".button").click(function(event){
         event.preventDefault();
-        $(".hidden").removeClass(".hidden")
+        $(".hidden").removeClass("hidden")
         $(".parks").empty()
         creatingVariables()
     })
@@ -51,7 +51,7 @@ function submitButton(){
 
 function renderTheParks(responseJson){
     console.warn(responseJson)
-    for (let i = 0; i < responseJson.length; i++){
+    for (let i = 0; i < responseJson.data.length; i++){
         $(".parks").append(
             `<li>
                 <div>

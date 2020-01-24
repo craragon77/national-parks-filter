@@ -8,9 +8,10 @@ function fetchRequest(url){
     fetch(url)
     .then(response => {
         if (response.ok){
-            (responseJson => console.log(responseJson))
+            return response.json()
         }
     })
+    .then(responseJson => console.log(responseJson))
     .catch(error => alert("Unfortunately, something went wrong! Go play outside and try again later!"))
 }
 

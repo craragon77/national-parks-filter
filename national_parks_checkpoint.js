@@ -11,7 +11,7 @@ function fetchRequest(url){
             return response.json()
         }
     })
-    .then(responseJson => console.log(responseJson))
+    .then(responseJson => renderTheParks(responseJson))
     .catch(error => alert("Unfortunately, something went wrong! Go play outside and try again later!"))
 }
 
@@ -43,7 +43,24 @@ function formatQuery(params){
 function submitButton(){
     $(".button").click(function(event){
         event.preventDefault();
+        $(".hidden").removeClass(".hidden")
+        $(".parks").empty()
         creatingVariables()
     })
+}
+
+function renderTheParks(responseJson){
+    console.warn(responseJson)
+    for (let i = 0; i < responseJson.length; i++){
+        $(".parks").append(
+            `<li>
+                <div>
+                    <h4>${responseJson.data[i].fullName}</h4><br
+                    <p>${responseJson.data[i].description}</p><br>
+                    <p><span><a href="${response.data[i].url}">Learn More at the website!</a></span></p>
+                </div>
+            </li>`
+        )
+    }
 }
 submitButton()

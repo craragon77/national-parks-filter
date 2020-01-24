@@ -25,8 +25,8 @@ function creatingVariables(){
 function iHopeThisWorks(stateInitials, requestedNumber){
     const params = {
         key: apiKey,
-        limit: requestedNumber,
         stateCode: stateInitials,
+        limit: requestedNumber
     }
     const queryString = formatQuery(params)
     const url = searchURL + '?' + queryString
@@ -34,8 +34,8 @@ function iHopeThisWorks(stateInitials, requestedNumber){
 }
 
 function formatQuery(params){
-    const queryItems = Object.keys
-        .map(keys => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+    const queryItems = Object.keys(params)
+        .map(key =>`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     return queryItems.join('&');
 }
 

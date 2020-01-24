@@ -1,7 +1,7 @@
 //developer.nps.gov/api/v1/parks
 
 const apiKey = 'tg3iuJhu0fNZp8JDNiNbcSO6M8xOQPvVkRVYmqDU';
-const searchURL = 'developer.nps.gov/api/v1/parks'
+const searchURL = 'http://developer.nps.gov/api/v1/parks'
 
 
 function fetchRequest(url){
@@ -24,7 +24,7 @@ function creatingVariables(){
 
 function iHopeThisWorks(stateInitials, requestedNumber){
     const params = {
-        key: apiKey,
+        api_key: apiKey,
         stateCode: stateInitials,
         limit: requestedNumber
     }

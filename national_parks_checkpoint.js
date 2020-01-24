@@ -1,14 +1,14 @@
 //developer.nps.gov/api/v1/parks
 
 const apiKey = 'tg3iuJhu0fNZp8JDNiNbcSO6M8xOQPvVkRVYmqDU';
-const searchURL = 'http://developer.nps.gov/api/v1/parks'
+const searchURL = 'https://developer.nps.gov/api/v1/parks'
 
 
 function fetchRequest(url){
     fetch(url)
     .then(response => {
         if (response.ok){
-            (responseJson => console.warn(responseJson))
+            (responseJson => console.log(responseJson))
         }
     })
     .catch(error => alert("Unfortunately, something went wrong! Go play outside and try again later!"))
@@ -24,9 +24,9 @@ function creatingVariables(){
 
 function iHopeThisWorks(stateInitials, requestedNumber){
     const params = {
-        api_key: apiKey,
+        limit: requestedNumber,
         stateCode: stateInitials,
-        limit: requestedNumber
+        api_key: apiKey
     }
     const queryString = formatQuery(params)
     const url = searchURL + '?' + queryString

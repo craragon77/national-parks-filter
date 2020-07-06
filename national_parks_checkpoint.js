@@ -12,6 +12,7 @@ function fetchRequest(url){
         }
     })
     .then(responseJson => renderTheParks(responseJson))
+    //.then(responseJson => renderInConsole(responseJson))
     .catch(error => alert("Unfortunately, something went wrong! Go play outside and try again later!"))
 }
 
@@ -49,18 +50,53 @@ function submitButton(){
     })
 }
 
+function testingNull(res){
+    if (res == []){
+        return null
+    }
+    else{
+        return res
+    }
+}
+
 function renderTheParks(responseJson){
     console.warn(responseJson)
+    
     for (let i = 0; i < responseJson.data.length; i++){
-        $(".parks").append(
-            `<li>
-                <div>
-                    <h4>${responseJson.data[i].fullName}</h4><br
-                    <p>${responseJson.data[i].description}</p><br>
-                    <p><span><a href="${responseJson.data[i].url}">Learn More at the website!</a></span></p>
-                </div>
-            </li>`
+        if(!responseJson.data[i].imaged[0].url){
+            return null
+        }
+            $(".parks").append(
+            `<div>
+                [<p>states: '${responseJson.data[i].states}'</p>
+                <p>image: '${responseJson.data[i].images[0].url}'</p>
+                <p>fullName: '${responseJson.data[i].fullName}'</p>
+                <p>parkCode: '${responseJson.data[i].parkCode}'</p>],
+            </div>`
         )
+    }
+}
+
+function filterTheParks(responseJson){
+    console.warn(responseJson)
+    let parsedResponse = JSON.parse(responseJson)
+    console.log(parsedResponse)
+    //responseJson.filter(park => {
+        //console.log(park.data.fullName)
+        //park.image[0] || null,
+        //park.parkCode,
+        //park.fullName
+    }
+
+
+function renderInConsole(responseJson){
+    for(let i = 0; i < responseJson.data.length; i++){
+        console.log(responseJson.data[i].states,
+            responseJson.data[i].url,
+            responseJson.data[i].image[0],
+            responseJson.data[i].fullName,
+            responseJson.data[i].id,
+            responseJson.data[i].parkCode)
     }
 }
 submitButton()

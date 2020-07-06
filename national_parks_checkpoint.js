@@ -63,7 +63,7 @@ function renderTheParks(responseJson){
     console.warn(responseJson)
     
     for (let i = 0; i < responseJson.data.length; i++){
-        if(!responseJson.data[i].images === []){
+        if(responseJson.data[i].images.length === 0){
             continue;
         }
             $(".parks").append(
